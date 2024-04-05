@@ -1,161 +1,98 @@
-//conditions
+// const title1 = document.getElementById('title');
+// const fnInp = document.getElementsByName('full-name');
+// const btn = document.getElementsByTagName('button');
+// const headings = document.getElementsByClassName('heading');
+// querySelector, querySelectorAll
 
-// if else
+// const btn1 = document.querySelector('form>input#f-name+button+button');
+// const headings2 = document.querySelectorAll('.heading');
+// const headingsArr = Array.from(headings2);
+// headingsArr.forEach((heading)=>{
+//     console.log(heading);
+// });
 
-let number = 5;
+// const list = document.querySelector('.inner-box>ul');
 
-if (number > 0) {
-  console.log(`${number} is positive`);
-} else if (number < 0) {
-  console.log(`${number} is negative`);
-} else {
-  console.log(`${number} is zero`);
-}
+//children
 
-if (number !== 0) {
-  if (number > 0) {
-    console.log(`${number} is positive`);
-  } else {
-    console.log(`${number} is negative`);
-  }
-} else {
-  console.log(`${number} is zero`);
-}
+// const ListItemsArr = Array.from(list.children);
+// ListItemsArr.forEach(listItem => {
+//     console.log(listItem.textContent);
+// });
 
-// if (number === 0) {
-//   console.log(`${number} is equal to 0, neigher ODD or EVEN`);
-// } else if (number % 2 !== 0) {
-//   console.log(`${number} is ODD`);
-// } else {
-//   console.log(`${number} is EVEN`);
+//node-element
+
+// const box = list.closest('.box');
+
+// console.log(box);
+
+// const box = document.querySelector('.box');
+
+// console.log(box.previousElementSibling);
+
+// const arrSize = Number(window.prompt("enter list item count: "));
+// const list = document.createElement("ul");
+// for (let i = 0; i < arrSize; i++) {
+//   const listItemText = window.prompt(`enter list item ${i+1}: `);
+//   //list item
+//   //   const listItem = document.createElement('li');
+//   //   listItem.textContent = listItemText;
+//   //   list.append(listItem);
+
+//   //innetHTML
+//   list.innerHTML += `<li>${listItemText}</li>`
 // }
-let ticketPrice = 8;
-let customerObj = {
-  customerName: "Seymur",
-  age: 18,
-  balance: 30,
-};
-let customerName = "Seymur";
-let age = 30;
-let balance = 10;
+// document.body.append(list);
 
-if (customerObj.age > 18) {
-  if (customerObj.balance >= 8) {
-    customerObj.balance = customerObj.balance - ticketPrice;
-    console.log(
-      `${customerObj.customerName}, your balance: ${customerObj.balance}`
-    );
-  } else {
-    console.log(`You are kasıb, ${customerObj.customerName}`);
-  }
-} else if (customerObj.age === 18) {
-  console.log(`${customerObj.customerName}, you are 18`);
-  customerObj.balance = customerObj.balance - ticketPrice / 2;
-  console.log(
-    `${customerObj.customerName}, your balance: ${customerObj.balance}`
-  );
-} else {
-  console.log(`${customerObj.customerName}, böyüyəndə gələrsən :)`);
-}
+// const navList = document.querySelector('#nav');
 
-//switch case
+// navList.remove();
 
-// let weekDay = 54;
+const link = document.querySelector("a");
+const img = document.querySelector("img");
 
-// let weekDay = +window.prompt("Enter week day here..", "test");
-// let weekDay = Number(window.prompt("Enter week day here..", "test"));
-let weekDay = parseInt(window.prompt("Enter week day here..", "test"));
-// console.log("weekDay ", weekDay);
-// if (weekDay === 1) {
-//   console.log("today is MONDAY");
-// } else if (weekDay === 2) {
-//   console.log("today is SUNDAY");
-// } else if (weekDay === 3) {
-//   console.log("today is SUNDAY");
-// } else if (weekDay === 4) {
-//   console.log("today is SUNDAY");
-// } else if (weekDay === 2) {
-//   console.log("today i5 SUNDAY");
-// } else if (weekDay === 6) {
-//   console.log("today is SUNDAY");
-// } else if (weekDay === 0) {
-//   console.log("today is SUNDAY");
-// } else {
-//   console.log("there is no such week day");
-// }
+// link.className = 'link';
 
-switch (weekDay) {
-  case 1:
-    // console.log("today is MONDAY");
-    window.alert("MONDAY");
-    break;
-  case 2:
-    console.log("today is TUESDAY");
-    break;
+// console.log(link.hasAttribute('data-id'));
 
-  case 3:
-    console.log("today is WEDNESDAY");
-    break;
+// link.setAttribute('target','_blank');
+// link.setAttribute('href','https://youtube.com');
+// console.log(link.getAttribute('href'));
+// img.setAttribute('src','https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1200px-FullMoon2010.jpg');
 
-  case 4:
-    console.log("today is THURSDAY");
-    break;
+// img.setAttribute('class','moon-img');
 
-  case 5:
-    console.log("today is FRIDAY");
-    break;
+// const moonImg = document.querySelector('.moon-img');
 
-  case 6:
-    console.log("today is SATURDAY");
-    break;
+// console.log('image: ',moonImg)
 
-  case 0:
-    console.log("today is SUNDAY");
-    break;
+// const contentP = document.querySelector(".content");
+// btn.classList.add('btn-secondary');
+// console.log(btn.classList)
+// btn.addEventListener("click", function () {
+//   // console.log(this.textContent);
+//   if (this.getAttribute("data-active") == "true") {
+//     contentP.style.color = "red";
+//     contentP.style.fontSize = "30px";
+//     this.setAttribute('data-active','false');
+//   } else {
+//     contentP.style.color = "black";
+//     contentP.style.fontSize = "16px";
+//     this.setAttribute('data-active','true');
+//   }
+// });
 
-  default:
-    console.log("there is no such week day");
-
-    break;
-}
-
-let bool = window.confirm("are u sure to delete product??");
-
-console.log(bool);
 
 const btn = document.querySelector(".btn");
 
-btn.addEventListener("click", function () {
-  console.log("clicked");
-});
+btn.addEventListener('click',function(){
+    // if (this.classList.contains('active-btn')) {
+    //    this.classList.remove('active-btn');
+    // }
+    // else{
+    //   this.classList.add('active-btn');
+    // }
 
-let a, b, c;
-
-a = 35;
-b = 43;
-c = 5;
-
-// if (a > b && a > c) {
-//   console.log(`en biyuk eded: ${a}`);
-// } else if (b > c && b > a) {
-//   console.log(`en boyuk eded ${b}`);
-// } else {
-//   console.log(`en boyuk eded: ${c}`);
-// }
-
-// console.log();
-
-let num = 512;
-
-let first;
-let second;
-let third;
-
-first = (num - (num % 100)) / 100;
-console.log(first);
-
-second = ((num - ((num % 100) % 10)) / 10) % 10;
-console.log(second);
-
-third = (num % 100) % 10;
-console.log(third);
+    this.classList.toggle('active-btn');
+    // this.classList.replace('btn-primary','test');
+})
