@@ -1,0 +1,4 @@
+objects
+string methods
+for in, for of
+isArray, isNan, isFinite, array.from
