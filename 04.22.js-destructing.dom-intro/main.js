@@ -84,7 +84,6 @@ const student = {
   },
   skill: ["html", "css", "js"],
 };
-
 // let firstName = student.firstName;
 // let lastName = student.lastName;
 
