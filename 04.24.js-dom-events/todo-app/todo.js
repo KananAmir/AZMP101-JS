@@ -3,7 +3,10 @@ const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector(".todo-lists");
 const errorMessage = document.querySelector(".error-message");
 const clearBtn = document.querySelector(".clear-all");
-let allTodos = [];
+// let allTodos = localStorage.getItem("todos") || [];
+let allTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
+
+renterTodos(allTodos);
 class Todo {
   constructor(todoText) {
     this.todoText = todoText;
@@ -20,6 +23,7 @@ function addTodo() {
     const todo = new Todo(todoInput.value);
 
     allTodos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(allTodos));
     // console.log(allTodos);
     renterTodos(allTodos);
     errorMessage.classList.replace("d-block", "d-none");
@@ -133,8 +137,11 @@ function renterTodos(arr) {
       }).then((result) => {
         console.log(result);
         if (result.isConfirmed) {
-          // Swal.fire({
-          // });
+          Swal.fire({
+            title: "Apdated!",
+            text: "Your todo has been updated.",
+            icon: "success",
+          });
         }
       });
 
