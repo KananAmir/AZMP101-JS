@@ -1,6 +1,8 @@
 const todoBtn = document.querySelector(".add");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector(".todo-lists");
+const errorMessage = document.querySelector(".error-message");
+const clearBtn = document.querySelector(".clear-all");
 let allTodos = [];
 class Todo {
   constructor(todoText) {
@@ -18,13 +20,27 @@ function addTodo() {
     const todo = new Todo(todoInput.value);
 
     allTodos.push(todo);
-    console.log(allTodos);
+    // console.log(allTodos);
     renterTodos(allTodos);
+    errorMessage.classList.replace("d-block", "d-none");
+    todoInput.classList.remove("error-border");
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your todo added succesfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   } else {
-    alert("input should be filled!");
+    // alert("input should be filled!");
+    errorMessage.classList.replace("d-none", "d-block");
+    todoInput.classList.add("error-border");
   }
+
   resetTodo();
 }
+
 todoBtn.addEventListener("click", addTodo);
 
 function resetTodo() {
@@ -41,21 +57,27 @@ function renterTodos(arr) {
       "list-group-item list-group-item-success mb-3 d-flex justify-content-between align-items-center";
     liElem.innerHTML = `
         <div>
-            <input type="checkbox" name="" id="complete" />
-            <span>${todo.todoText}, <i>${todo.createdAt}</i></span>
+            <input type="checkbox" name="" class="mark-as-done" ${
+              todo.completed && "checked"
+            } data-id=${todo.id}>
+            
+            <span>${todo.todoText}</span>
         </div>
         <div>
-            <button class="btn btn-success edit"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button class="btn btn-danger delete" data-id="${todo.id}"><i class="fa-solid fa-trash"></i></button>   
+            <button class="btn btn-success edit" data-id="${
+              todo.id
+            }"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="btn btn-danger delete" data-id="${
+              todo.id
+            }"><i class="fa-solid fa-trash"></i></button>   
         </div>
     `;
 
     todoList.append(liElem);
   });
 
+  // <span>${todo.todoText}, <i>${todo.createdAt}</i></span>
   const allDeleteBtns = document.querySelectorAll(".delete");
-
-  //   console.log(allDeleteBtns);
 
   allDeleteBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
@@ -63,21 +85,132 @@ function renterTodos(arr) {
       //   this.parentElement.parentElement.remove();
       //   this.closest(".list-group-item").remove();
 
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        // console.log(result);
+
+        if (result.isConfirmed) {
+          const id = this.getAttribute("data-id");
+          deleteTodo(id);
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your todo has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    });
+  });
+
+  const allEditBtns = document.querySelectorAll(".edit");
+
+  allEditBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
       const id = this.getAttribute("data-id");
-      //   console.log(id);
-      deleteTodo(id);
+      const editedTodo = allTodos.find((q) => q.id == id);
+      console.log(editedTodo);
+      Swal.fire({
+        title: "Edit selected Todo",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off",
+        },
+        showCancelButton: true,
+        confirmButtonText: "Edit",
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+          editedTodo.todoText = document.querySelector("#swal2-input").value;
+          console.log(allTodos);
+          renterTodos(allTodos);
+        },
+      }).then((result) => {
+        console.log(result);
+        if (result.isConfirmed) {
+          // Swal.fire({
+          // });
+        }
+      });
+
+      console.log(allTodos);
+
+      const alertInput = document.querySelector("#swal2-input");
+
+      alertInput.value = editedTodo.todoText;
+    });
+  });
+
+  const allTodoCheckBoxs = document.querySelectorAll(".mark-as-done");
+
+  allTodoCheckBoxs.forEach((q) => {
+    q.addEventListener("change", function () {
+      const id = this.getAttribute("data-id");
+      const checkTodo = allTodos.find((todo) => todo.id == id);
+      // console.log(this.checked);
+
+      if (checkTodo.completed) {
+        checkTodo.completed = false;
+      } else {
+        checkTodo.completed = true;
+      }
+
+      console.log(allTodos);
     });
   });
 }
 
+clearBtn.addEventListener("click", function () {
+  clearAllTodos();
+});
 function deleteTodo(id) {
   allTodos = allTodos.filter((q) => q.id != id);
   renterTodos(allTodos);
 }
 
+function clearAllTodos() {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    // console.log(result);
+
+    if (result.isConfirmed) {
+      allTodos.length = 0;
+      todoList.innerHTML = "";
+
+      Swal.fire({
+        title: "Deleted All Todos!",
+        text: "Your todo has been deleted.",
+        icon: "success",
+      });
+    }
+  });
+}
 window.addEventListener("keyup", function (e) {
   //   console.log(e.code);
   if (e.code === "Enter") {
     addTodo();
+  }
+});
+
+todoInput.addEventListener("input", function (e) {
+  // console.log(e.target.value);
+  if (e.target.value) {
+    errorMessage.classList.replace("d-block", "d-none");
+    todoInput.classList.remove("error-border");
+  } else {
+    errorMessage.classList.replace("d-none", "d-block");
+    todoInput.classList.add("error-border");
   }
 });
