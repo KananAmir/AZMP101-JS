@@ -17,7 +17,7 @@ class Todo {
     this.todoText = todoText;
     this.completed = false;
     this.id = Date.now();
-    this.createdAt = new Date().toUTCString();
+    this.createdAt = new Date().toLocaleDateString();
   }
 }
 
@@ -87,7 +87,7 @@ function renterTodos(arr) {
             
             <span class="${todo.completed ? "completed-todo" : ""}">${
       todo.todoText
-    }</span>
+    }, <i>${todo.createdAt}</i></span>
         </div>
         <div>
             <button class="btn btn-success edit" data-id="${
@@ -102,7 +102,6 @@ function renterTodos(arr) {
     todoList.append(liElem);
   });
 
-  // <span>${todo.todoText}, <i>${todo.createdAt}</i></span>
   const allDeleteBtns = document.querySelectorAll(".delete");
 
   allDeleteBtns.forEach((btn) => {
