@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "productName": "asus",
+      "price": 2300
+    },
+    {
+      "id": "2",
+      "productName": "lenova",
+      "price": 2000
+    },
+    {
+      "id": "3",
+      "productName": "mac",
+      "price": 4500
+    }
+  ],
+  "users": [
+    {
+      "userId": "123",
+      "userName": "jhon_doe",
+      "email": "jhon@gmail.com"
+    },
+    {
+      "userId": "345",
+      "userName": "lorem_ipsum",
+      "email": "lorem@gmail.com"
+    }
+  ],
+  "employees": []
+}
