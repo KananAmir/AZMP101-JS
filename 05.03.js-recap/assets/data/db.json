@@ -241,5 +241,43 @@
       }
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": "1714808012996",
+      "username": "riyad",
+      "email": "riyad@gmail.com",
+      "password": "riyad123",
+      "favorites": ["6", "5", "1"],
+      "basket": [
+        {
+          "productId": "2",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "1714808022919",
+      "username": "riyad",
+      "email": "bedibeso@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "favorites": [],
+      "basket": []
+    },
+    {
+      "id": "1714808233402",
+      "username": "alii",
+      "email": "wyrigif@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "favorites": [],
+      "basket": []
+    },
+    {
+      "id": "1714808610373",
+      "username": "murad",
+      "email": "murad@gmail.com",
+      "password": "murad123",
+      "favorites": ["3", "1", "5", "8"],
+      "basket": []
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import { getAllData } from "./services.js";
+import { getAllData, updateDataById } from "./services.js";
 
 const tBody = document.querySelector("tbody");
 const search = document.querySelector("#search");
@@ -9,10 +9,19 @@ const sortTitle = document.querySelector(".sort-title");
 const sortByTitleSelect = document.querySelector("#sort-by-title");
 const spinner = document.querySelector(".spinner");
 const more = document.querySelector(".more");
+const wellcome = document.querySelector(".wellcome span");
 
 let rowCount = 3;
 let products = null;
 
+let users = null;
+const getUsers = async () => {
+  const response = await getAllData("users");
+  //   console.log(response.data);
+  users = response.data;
+};
+
+getUsers();
 async function getProducts() {
   try {
     const response = await getAllData("products");
@@ -26,8 +35,14 @@ async function getProducts() {
   }
 }
 
+let userId = null;
 window.addEventListener("load", function () {
   getProducts();
+  userId = getUserIdFromLocalStorage();
+
+  const user = users?.find((q) => q.id === userId);
+
+  wellcome.textContent = user?.username || "User";
 });
 function drawTable(arr) {
   tBody.innerHTML = "";
@@ -40,11 +55,36 @@ function drawTable(arr) {
       <td>${element.category}</td>
       <td>${element.description}</td>
       <td>${element.price}</td>
+      <td><i class="fa-solid fa-heart fav-icon" data-id="${element.id}"></i></td>
       <td><a href="details.html?id=${element.id}">Deatils</a></td>
       <td><a href="form.html?id=${element.id}" class="btn btn-success">Edit</a></td>
       `;
 
     tBody.append(trElem);
+  });
+
+  const allFavIcons = document.querySelectorAll(".fav-icon");
+
+  allFavIcons.forEach((icon) => {
+    icon.addEventListener("click", function () {
+      console.log(this);
+
+      const productId = this.getAttribute("data-id");
+      const user = users.find((q) => q.id === userId);
+
+      if (!user.favorites.includes(productId)) {
+        updateDataById("users", userId, {
+          favorites: [...user.favorites, productId],
+        });
+      } else {
+        user.favorites = user.favorites.filter((q) => q != productId);
+        updateDataById("users", userId, {
+          favorites: [...user.favorites],
+        });
+      }
+
+      console.log(user);
+    });
   });
 }
 
@@ -127,3 +167,7 @@ more.addEventListener("click", function () {
   }
   drawTable(products.slice(0, rowCount));
 });
+
+function getUserIdFromLocalStorage() {
+  return localStorage.getItem("userId");
+}

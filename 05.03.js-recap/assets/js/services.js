@@ -47,7 +47,10 @@ const addNewData = async (endpoint, payload) => {
 
 const updateDataById = async (endpoint, id, payload) => {
   try {
-    const response = await axios.put(`${BASE_URL}/${endpoint}/${id}`, payload);
+    const response = await axios.patch(
+      `${BASE_URL}/${endpoint}/${id}`,
+      payload
+    );
     return response;
   } catch (error) {
     console.log(error);

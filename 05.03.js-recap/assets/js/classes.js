@@ -8,3 +8,14 @@ export class Product {
     this.id = `${Date.now()}`;
   }
 }
+
+export class User {
+  constructor(username, email, password) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.id = `${Date.now()}`;
+    this.favorites = [];
+    this.basket = [];
+  }
+}
