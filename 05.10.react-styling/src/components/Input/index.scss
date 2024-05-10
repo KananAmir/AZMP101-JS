@@ -1,0 +1,12 @@
+input {
+  color: red;
+  padding: 10px;
+  outline: none;
+
+  &.teal {
+    background-color: teal;
+  }
+  &.orange {
+    background-color: orange;
+  }
+}

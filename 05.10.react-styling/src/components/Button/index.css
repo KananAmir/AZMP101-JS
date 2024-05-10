@@ -1,0 +1,22 @@
+.btn {
+  color: orange;
+  background-color: transparent;
+  border: 1px solid orange;
+  transition: all 1s;
+}
+
+.btn:hover {
+  background-color: orange;
+  color: white;
+}
+
+.primary {
+  background-color: teal;
+  border: 1px solid teal;
+  color: white;
+}
+.secondary {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+}
