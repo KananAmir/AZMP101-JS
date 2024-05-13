@@ -1,5 +1,5 @@
 {
-  "name": "05.10.react-styling",
+  "name": "05.13.reatc-basic-routing",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,32 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@headlessui/react": "^2.0.3",
-    "@heroicons/react": "^2.1.3",
-    "@mui/icons-material": "^5.15.17",
-    "@mui/material": "^5.15.17",
     "axios": "^1.6.8",
-    "json-server": "^1.0.0-alpha.23",
+    "bootstrap": "^5.3.3",
+    "node-sass": "^9.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
-    "react-icons": "^5.2.1",
-    "styled-components": "^6.1.11"
+    "react-router-dom": "^6.23.1",
+    "sass": "^1.77.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "node-sass": "^9.0.0",
-    "postcss": "^8.4.38",
-    "sass": "^1.77.0",
-    "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
   }
 }

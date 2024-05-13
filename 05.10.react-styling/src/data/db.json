@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "raiting": 4,
+      "title": "asus",
+      "desc": "Shoulder Bag Leather Bag Leather undertakes laborious physical physical",
+      "price": 130,
+      "discount": 20,
+      "isNew": true,
+      "image": "../../../public/images/kisspng-bag-laptop.png"
+    },
+    {
+      "id": "2",
+      "raiting": 3,
+      "title": "lenova",
+      "desc": "Shoulder Bag Leather Bag Leather undertakes laborious physical physical",
+      "price": 100,
+      "discount": 0,
+      "isNew": false,
+      "image": "../../../public/images/kisspng-bag-laptop.png"
+    },
+    {
+      "id": "3",
+      "raiting": 5,
+      "title": "mac",
+      "desc": "Shoulder Bag Leather Bag Leather undertakes laborious physical physical",
+      "price": 200,
+      "discount": 50,
+      "isNew": true,
+      "image": "../../../public/images/kisspng-bag-laptop.png"
+    }
+  ]
+}

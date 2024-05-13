@@ -5,14 +5,17 @@ import Contact from "./components/Contact";
 import Form from "./components/Form";
 import HeroSection from "./components/Hero";
 import Input from "./components/Input";
+import ProductCard from "./components/ProductCard";
+import Products from "./components/Products";
 import Footer from "./layouts/Footer";
 import Header from "./layouts/Header";
 
 function App() {
   return (
     <>
-      {/* <Header /> */}
-      <HeroSection />
+      <Header />
+      <Products />
+      {/* <HeroSection /> */}
       {/* <Card /> */}
       {/* <hr /> */}
       {/* <Button /> */}
