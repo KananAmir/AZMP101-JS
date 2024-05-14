@@ -12,20 +12,25 @@ import { getDataFromLocalStorage, setDataToLocalStorage } from "../../helpers";
 
 export default function ProductCard({ product }) {
   const [value, setValue] = useState(product.raiting);
-  const [favs, setFavs] = useState(getDataFromLocalStorage("favs") || []);
+
+  const [favsArray, setFavsArray] = useState(
+    getDataFromLocalStorage("favs") || []
+  );
 
   const handleFavorite = (id) => {
-    // const idx = favs.findIndex((q) => q === id);
+    let favs = getDataFromLocalStorage("favs") || [];
     const found = favs.find((q) => q === id);
 
     if (found) {
-      setFavs([...favs].filter((q) => q !== id));
+      favs = [...favs].filter((q) => q !== id);
     } else {
       // favs.splice(idx, 1);
-      setFavs([...favs, id]);
+      favs = [...favs, id];
     }
 
     setDataToLocalStorage("favs", favs);
+
+    setFavsArray(favs);
   };
 
   return (
@@ -42,11 +47,16 @@ export default function ProductCard({ product }) {
           </span>
         </Typography>
       )}
-
+      {console.log(favsArray)}
+      {console.log(favsArray.find((q) => q === product.id))}
       <Typography style={{ position: "absolute", top: 10, right: 10 }}>
-        <FavoriteIcon onClick={() => handleFavorite(product.id)} />
+        <FavoriteIcon
+          style={{
+            color: favsArray?.find((q) => q === product.id) && "red",
+          }}
+          onClick={() => handleFavorite(product.id)}
+        />
       </Typography>
-
       <Typography component="legend"></Typography>
       <Rating
         name="simple-controlled"
