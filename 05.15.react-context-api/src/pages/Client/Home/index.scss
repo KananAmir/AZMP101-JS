@@ -1,0 +1,29 @@
+#home {
+  .home {
+    .mySwiper {
+      .slide {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16rem 0;
+        &.slide1 {
+          background-image: url("https://preview.colorlib.com/theme/tasty/images/bg_2.jpg");
+        }
+        &.slide2 {
+          background-image: url("https://preview.colorlib.com/theme/tasty/images/bg_3.jpg");
+        }
+        &.slide3 {
+          background-image: url("https://preview.colorlib.com/theme/tasty/images/bg_1.jpg");
+        }
+        .content {
+          color: white;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
